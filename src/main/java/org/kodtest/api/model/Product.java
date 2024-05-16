@@ -2,7 +2,7 @@ package org.kodtest.api.model;
 
 public class Product {
 
-	private Long id;
+	private int id;
 	private String title;
 	private double price;
 	private String description;
@@ -10,7 +10,10 @@ public class Product {
 	private String image;
 	private Rating rating;
 
-	public Product(Long id, String title, double price, String description, String category, String image,
+	public Product() {
+	}
+	
+	public Product(int id, String title, double price, String description, String category, String image,
 			Rating rating) {
 		this.id = id;
 		this.title = title;
@@ -21,12 +24,12 @@ public class Product {
 		this.rating = rating;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -109,6 +112,18 @@ public class Product {
 		public void setCount(long count) {
 			this.count = count;
 		}
-		
 	}
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", image='" + image + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }
