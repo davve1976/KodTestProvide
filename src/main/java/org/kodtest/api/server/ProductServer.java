@@ -15,49 +15,48 @@ import org.kodtest.api.service.ProductServiceImpl;
 
 public class ProductServer {
 
-    private static final String API_PATH = "/*";
+	private static final String API_PATH = "/*";
 
-    public static void main(String[] args) {
-        setupWebServer();
-        
-    }
-    
-    private static void testFejkStore() {
-    	ProductService ps = new ProductServiceImpl();
-    	List<Product> all = ps.getAllProductsTest();
-    	Product product = ps.getProductByIdTest(all,1);
-    	System.out.println(product.toString());
-    }
+	public static void main(String[] args) {
+		setupWebServer();
+	}
 
-    private static void setupWebServer() {
-        System.out.println("Setting up web server at http://localhost:8080");
-        Server server = new Server();
-        ServerConnector connector = new ServerConnector(server);
-        connector.setHost("localhost");
-        connector.setPort(8080);
-        server.addConnector(connector);
-        
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
-        context.setContextPath("/");
-        server.setHandler(context);
-        
-        ResourceConfig config = new ApplicationConfig();
-        
-        ServletContainer container = new ServletContainer(config);
+	private static void testFejkStore() {
+		ProductService ps = new ProductServiceImpl();
+		List<Product> all = ps.getAllProductsTest();
+		Product product = ps.getProductByIdTest(all,1);
+		System.out.println(product.toString());
+	}
 
-        ServletHolder servletHolder = new ServletHolder(container);
+	private static void setupWebServer() {
+		System.out.println("Setting up web server at http://localhost:8080");
+		Server server = new Server();
+		ServerConnector connector = new ServerConnector(server);
+		connector.setHost("localhost");
+		connector.setPort(8080);
+		server.addConnector(connector);
 
-        context.addServlet(servletHolder, API_PATH);
+		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
+		context.setContextPath("/");
+		server.setHandler(context);
 
-        try {
-            server.start();
-            System.out.println("Web server started");
-            testFejkStore();
-            server.join();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            server.destroy();
-        }
-    }
+		ResourceConfig config = new ApplicationConfig();
+
+		ServletContainer container = new ServletContainer(config);
+
+		ServletHolder servletHolder = new ServletHolder(container);
+
+		context.addServlet(servletHolder, API_PATH);
+
+		try {
+			server.start();
+			System.out.println("Web server started");
+			testFejkStore();
+			server.join();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			server.destroy();
+		}
+	}
 }

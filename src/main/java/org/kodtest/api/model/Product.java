@@ -12,7 +12,7 @@ public class Product {
 
 	public Product() {
 	}
-	
+
 	public Product(int id, String title, double price, String description, String category, String image,
 			Rating rating) {
 		this.id = id;
@@ -114,16 +114,16 @@ public class Product {
 		}
 	}
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", category='" + category + '\'' +
-                ", image='" + image + '\'' +
-                ", rating=" + rating +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Product{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", price=" + price +
+				", description='" + description + '\'' +
+				", category='" + category + '\'' +
+				", image='" + image + '\'' +
+				", rating=" + rating +
+				'}';
+	}
 }

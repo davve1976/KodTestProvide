@@ -19,27 +19,27 @@ public class ProductController {
 
 	@Inject
 	public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+		this.productService = productService;
+	}
 
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Product getProductById(@PathParam("id") int id) {
-        return productService.getProductById(id);
-    }
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Product getProductById(@PathParam("id") int id) {
+		return productService.getProductById(id);
+	}
 
-    @GET
-    @Path("/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
-    }
-    
-    @GET
-    @Path("/available")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String available() {
-       return "yes";
-    }
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Product> getAllProducts() {
+		return productService.getAllProducts();
+	}
+
+	@GET
+	@Path("/available")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String available() {
+		return "yes";
+	}
 }

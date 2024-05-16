@@ -21,12 +21,12 @@ import com.google.gson.reflect.TypeToken;
 
 public class ProductServiceImpl implements ProductService {
 
-    @Override
-    public Product getProductById(int id) {
-    	// to be implemented....get from database
-    	Product a = new Product();
-        return a;
-    }
+	@Override
+	public Product getProductById(int id) {
+		// to be implemented....get from database
+		Product a = new Product();
+		return a;
+	}
 
 	@Override
 	public List<Product> getAllProducts() {
@@ -34,45 +34,45 @@ public class ProductServiceImpl implements ProductService {
 		return Collections.emptyList();
 	}
 
-    public List<Product> getAllProductsTest() {
-        try {
-            Gson gson = new Gson();
-            String jsonString = fetchDataFromURL("https://fakestoreapi.com/products");
-            String json = jsonString; // Your JSON string here
-            Type productListType = new TypeToken<List<Product>>() {}.getType();
-            return gson.fromJson(json, productListType);
-        	//return 
+	public List<Product> getAllProductsTest() {
+		try {
+			Gson gson = new Gson();
+			String jsonString = fetchDataFromURL("https://fakestoreapi.com/products");
+			String json = jsonString; // Your JSON string here
+			Type productListType = new TypeToken<List<Product>>() {}.getType();
+			return gson.fromJson(json, productListType);
+			//return 
 		} catch (IOException e) {
 			return Collections.emptyList();
 		}
-    }
+	}
 
-    public Product getProductByIdTest(List<Product> products, int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return product;
-            }
-        }
-        return null;
-    }
+	public Product getProductByIdTest(List<Product> products, int id) {
+		for (Product product : products) {
+			if (product.getId() == id) {
+				return product;
+			}
+		}
+		return null;
+	}
 
-    public static String fetchDataFromURL(String urlString) throws IOException {
-        URL url = new URL(urlString);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+	public static String fetchDataFromURL(String urlString) throws IOException {
+		URL url = new URL(urlString);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
 
-        int responseCode = connection.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-            return response.toString();
-        } else {
-            throw new IOException("Failed to fetch data from URL. Response code: " + responseCode);
-        }
-    }
+		int responseCode = connection.getResponseCode();
+		if (responseCode == HttpURLConnection.HTTP_OK) {
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuilder response = new StringBuilder();
+			String inputLine;
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+			return response.toString();
+		} else {
+			throw new IOException("Failed to fetch data from URL. Response code: " + responseCode);
+		}
+	}
 }
