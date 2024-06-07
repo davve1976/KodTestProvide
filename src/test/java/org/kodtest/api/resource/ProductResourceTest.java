@@ -13,7 +13,7 @@ public class ProductResourceTest extends JerseyTest {
 
     @Override
     protected Application configure() {
-        // Configure JerseyTest to use your resource class
+        // Configure JerseyTest to use resource class
     	return new ApplicationConfig();
     }
 
@@ -25,9 +25,7 @@ public class ProductResourceTest extends JerseyTest {
         // Check if the response status is 200 OK
         assertEquals(200, response.getStatus());
 
-        // Add more assertions to validate the response content if needed
     }
 
-    // Add more test methods to cover other endpoints
 }
 
